@@ -100,7 +100,7 @@ services:
       - "--not-matches"
       - "**/.*"
       - "--header"
-      - "Docspell-Integration:integration-password123"
+      - "Docspell-Integration:FJHQ%kvTQ5!ai9vc3z*b"
       - "/opt/docs"
     restart: unless-stopped
     volumes:
