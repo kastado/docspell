@@ -25,10 +25,10 @@ services:
     ports:
       - "7880:7880"
     environment:
-      - TZ=Europe/Berlin
+      - TZ=Europe/Athens
       - DOCSPELL_SERVER_INTERNAL__URL=http://docspell-restserver:7880
-      - DOCSPELL_SERVER_ADMIN__ENDPOINT_SECRET=admin123
-      - DOCSPELL_SERVER_AUTH_SERVER__SECRET=
+      - DOCSPELL_SERVER_ADMIN__ENDPOINT_SECRET=xXB4wKX3$7Nrw7gWP5yf
+      - DOCSPELL_SERVER_AUTH_SERVER__SECRET=w2wNAi3o$&iNNg&7uYMg
       - DOCSPELL_SERVER_BACKEND_JDBC_PASSWORD=dbpass
       - DOCSPELL_SERVER_BACKEND_JDBC_URL=jdbc:postgresql://db:5432/dbname
       - DOCSPELL_SERVER_BACKEND_JDBC_USER=dbuser
@@ -37,9 +37,9 @@ services:
       - DOCSPELL_SERVER_FULL__TEXT__SEARCH_SOLR_URL=http://docspell-solr:8983/solr/docspell
       - DOCSPELL_SERVER_INTEGRATION__ENDPOINT_ENABLED=true
       - DOCSPELL_SERVER_INTEGRATION__ENDPOINT_HTTP__HEADER_ENABLED=true
-      - DOCSPELL_SERVER_INTEGRATION__ENDPOINT_HTTP__HEADER_HEADER__VALUE=integration-password123
+      - DOCSPELL_SERVER_INTEGRATION__ENDPOINT_HTTP__HEADER_HEADER__VALUE=FJHQ%kvTQ5!ai9vc3z*b
       - DOCSPELL_SERVER_BACKEND_SIGNUP_MODE=open
-      - DOCSPELL_SERVER_BACKEND_SIGNUP_NEW__INVITE__PASSWORD=
+      - DOCSPELL_SERVER_BACKEND_SIGNUP_NEW__INVITE__PASSWORD=FJHQ%kvTQ5!ai9vc3z*b
       - DOCSPELL_SERVER_BACKEND_ADDONS_ENABLED=false
     depends_on:
       - solr
@@ -104,7 +104,7 @@ services:
       - "/opt/docs"
     restart: unless-stopped
     volumes:
-      - ./docs:/opt/docs
+      - /mnt/unraid/docspell/docs:/opt/docs
     depends_on:
       - restserver
 
@@ -138,4 +138,14 @@ services:
 
 volumes:
   docspell-postgres_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /mnt/unraid/docspell/docspell-postgres_data
   docspell-solr_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /mnt/unraid/docspell/docspell-solr_data
