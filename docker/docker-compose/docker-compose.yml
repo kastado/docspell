@@ -21,7 +21,7 @@ services:
   restserver:
     image: docspell/restserver:latest
     container_name: docspell-restserver
-    user: 1000:100
+    user: 0:0
     restart: unless-stopped
     ports:
       - "7880:7880"
@@ -49,7 +49,7 @@ services:
   joex:
     image: docspell/joex:latest
     container_name: docspell-joex
-    user: 1000:100
+    user: 0:0
     ## For more memory add corresponding arguments, like below. Also see
     ## https://docspell.org/docs/configure/#jvm-options
     # command:
@@ -92,7 +92,7 @@ services:
   consumedir:
     image: docspell/dsc:latest
     container_name: docspell-consumedir
-    user: 1000:100
+    user: 0:0
     command:
       - dsc
       - "-d"
@@ -114,7 +114,7 @@ services:
   db:
     image: postgres:17.0
     container_name: postgres_db
-    user: 1000:100
+    user: 0:0
     restart: unless-stopped
     volumes:
       - docspell-postgres_data:/var/lib/postgresql/data/
@@ -126,7 +126,7 @@ services:
   solr:
     image: solr:9
     container_name: docspell-solr
-    user: 1000:100
+    user: 0:0
     restart: unless-stopped
     volumes:
       - docspell-solr_data:/var/solr
