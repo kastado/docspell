@@ -111,6 +111,7 @@ services:
   db:
     image: postgres:17.0
     container_name: postgres_db
+    user: 0:0
     restart: unless-stopped
     volumes:
       - docspell-postgres_data:/var/lib/postgresql/data/
